@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Roadmap After 10th</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #dbeafe, #fef9c3);
+      transition: background 0.5s ease-in-out;
+    }
+    header {
+      background: linear-gradient(to right, #6366f1, #818cf8);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      padding: 2rem;
+      text-align: center;
+    }
+    .btn {
+      margin: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      color: white;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .science { background-color: #3b82f6; }
+    .commerce { background-color: #f59e0b; }
+    .arts { background-color: #ef4444; }
+
+    .back-btn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.4rem;
+      background-color: #9ca3af;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .back-btn:hover {
+      background-color: #6b7280;
+    }
+
+    .option, .career {
+      background-color: white;
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 700px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .career:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Congratulations on passing 10th! 🎉</h1>
+    <p>Choose your stream for a detailed roadmap.</p>
+  </header>
+  <div class="container" id="main">
+    <button class="btn science" onclick="showOptions('science')">Science (🧪)</button>
+    <button class="btn commerce" onclick="showOptions('commerce')">Commerce (💼)</button>
+    <button class="btn arts" onclick="showOptions('arts')">Arts (🎨)</button>
+  </div>
+
+  <script>
+    const main = document.getElementById('main');
+
+    const streams = {
+      science: [
+        { label: "PCM: Engineering, Defense, Research →", key: "pcm" },
+        { label: "PCB: Medical, Pharmacy, Biotech →", key: "pcb" }
+      ],
+      commerce: [
+        { label: "With Maths: CA, CFA, Actuary →", key: "comm_maths" },
+        { label: "Without Maths: B.Com, BBA →", key: "comm_nomaths" }
+      ],
+      arts: [
+        { label: "With Maths: Economics, Psychology →", key: "arts_maths" },
+        { label: "Without Maths: History, Literature →", key: "arts_nomaths" }
+      ]
+    };
+
+    const careerPages = {
+      pcm: [
+        { name: "Engineering", exams: "JEE Main, JEE Advanced, State CETs", duration: "4 years", salary: "₹6–30 LPA", colleges: "IITs, NITs, BITS Pilani, VIT, IIITs" },
+        { name: "Architecture", exams: "NATA, JEE Main (Paper 2)", duration: "5 years", salary: "₹4–12 LPA", colleges: "SPA Delhi, IIT Roorkee, CEPT, Sir JJ College of Architecture" },
+        { name: "Aerospace Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹5–15 LPA", colleges: "IIT Kanpur, IIT Bombay, MIT" },
+        { name: "Chemical Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹6–18 LPA", colleges: "IIT Delhi, IIT Madras, NIT Warangal" },
+        { name: "Electrical Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹5–20 LPA", colleges: "IIT Bombay, IIT Delhi, NIT Trichy" },
+        { name: "Civil Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹4–15 LPA", colleges: "IIT Roorkee, NIT Calicut, BITS Pilani" },
+        { name: "Mechanical Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹6–25 LPA", colleges: "IIT Kanpur, IIT Madras, BITS Pilani" },
+        { name: "Biotechnology", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹4–12 LPA", colleges: "IIT Kharagpur, IIT Bombay, NIT Warangal" },
+        { name: "Marine Engineering", exams: "IMU CET, JEE Advanced", duration: "4 years", salary: "₹7–25 LPA", colleges: "Indian Maritime University, IIT Madras" },
+        { name: "Petroleum Engineering", exams: "JEE Main, JEE Advanced", duration: "4 years", salary: "₹8–20 LPA", colleges: "IIT Bombay, IIT Kharagpur, UPES Dehradun" }
+      ],
+      pcb: [
+        { name: "MBBS", exams: "NEET UG", duration: "5.5 years", salary: "₹8–20 LPA", colleges: "AIIMS, KMC Manipal, JIPMER" },
+        { name: "BDS", exams: "NEET UG", duration: "5 years", salary: "₹5–15 LPA", colleges: "Dr. DY Patil, Manipal University, King’s College London" },
+        { name: "BAMS", exams: "NEET UG", duration: "5.5 years", salary: "₹4–12 LPA", colleges: "BHU, JSS Medical College, GGSIPU" },
+        { name: "BHMS", exams: "NEET UG", duration: "5.5 years", salary: "₹3–8 LPA", colleges: "National Institute of Homeopathy, Maharashtra University of Health Sciences" },
+        { name: "Pharmacy", exams: "GPAT", duration: "4 years", salary: "₹3–8 LPA", colleges: "Jamia Hamdard, BITS Pilani, Delhi University" },
+        { name: "Nursing", exams: "AIIMS Nursing, State Nursing Exams", duration: "3–4 years", salary: "₹4–10 LPA", colleges: "AIIMS, Tata Memorial, St. Xavier’s" },
+        { name: "Biotechnology", exams: "NEET, JEE", duration: "4 years", salary: "₹4–10 LPA", colleges: "IIT Kharagpur, Jamia Millia Islamia" },
+        { name: "Biochemistry", exams: "NEET, JEE", duration: "3 years", salary: "₹3–8 LPA", colleges: "University of Delhi, Banaras Hindu University" },
+        { name: "Veterinary Science", exams: "NEET UG", duration: "5 years", salary: "₹4–12 LPA", colleges: "Indian Veterinary Research Institute, OUAT" },
+        { name: "Microbiology", exams: "NEET, JEE", duration: "3 years", salary: "₹3–10 LPA", colleges: "St. Xavier’s College, IIT Delhi, Pune University" }
+      ],
+      comm_maths: [
+        { name: "CA", exams: "CA Foundation, IPCC, Final", duration: "3–5 years", salary: "₹8–25 LPA", colleges: "ICAI, Pune University, NMIMS" },
+        { name: "CFA", exams: "CFA Level 1, 2, 3", duration: "2–3 years", salary: "₹10–40 LPA", colleges: "CFA Institute, University of Mumbai" },
+        { name: "Actuary", exams: "Institute of Actuaries", duration: "3–4 years", salary: "₹10–30 LPA", colleges: "ICAI, University of Chennai" },
+        { name: "BBA", exams: "IPM, DUJAT, NPAT", duration: "3 years", salary: "₹5–15 LPA", colleges: "IIM Indore, NMIMS, Christ University" },
+        { name: "BMS", exams: "IPM, DUJAT", duration: "3 years", salary: "₹4–12 LPA", colleges: "University of Mumbai, IP University" },
+        { name: "B.Com", exams: "State University Entrance Exam", duration: "3 years", salary: "₹2–6 LPA", colleges: "Shivaji College, SRCC, Delhi University" },
+        { name: "Hotel Management", exams: "NCHMCT JEE", duration: "3 years", salary: "₹3–8 LPA", colleges: "IHM Pusa, Oberoi Centre of Learning" },
+        { name: "Retail Management", exams: "IPU CET, JET", duration: "3 years", salary: "₹4–10 LPA", colleges: "NMIMS, Shriram College of Commerce" },
+        { name: "Finance Analyst", exams: "CFA, MBA in Finance", duration: "2 years (MBA)", salary: "₹7–20 LPA", colleges: "IIMs, ISB" },
+        { name: "Digital Marketing", exams: "Google Certification, Facebook Blueprint", duration: "6 months–1 year", salary: "₹5–12 LPA", colleges: "Simplilearn, Digital Vidya" }
+      ],
+      comm_nomaths: [
+        { name: "B.Com", exams: "State University Entrance Exam", duration: "3 years", salary: "₹2–6 LPA", colleges: "Shivaji College, SRCC, Delhi University" },
+        { name: "BBA", exams: "IPM, DUJAT, NPAT", duration: "3 years", salary: "₹5–15 LPA", colleges: "IIM Indore, NMIMS, Christ University" },
+        { name: "Hotel Management", exams: "NCHMCT JEE", duration: "3 years", salary: "₹3–8 LPA", colleges: "IHM Pusa, Oberoi Centre of Learning" },
+        { name: "BMS", exams: "IPM, DUJAT", duration: "3 years", salary: "₹4–12 LPA", colleges: "University of Mumbai, IP University" },
+        { name: "Logistics Management", exams: "CAT, MAT", duration: "3 years", salary: "₹4–8 LPA", colleges: "Shivaji University, UPES" },
+        { name: "Economics", exams: "DUET, AILET", duration: "3 years", salary: "₹4–10 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Business Economics", exams: "CUCET", duration: "3 years", salary: "₹4–9 LPA", colleges: "Gokhale Institute of Politics" },
+        { name: "Fashion Design", exams: "NIFT Entrance Exam", duration: "4 years", salary: "₹3–12 LPA", colleges: "NIFT, Pearl Academy" },
+        { name: "Interior Design", exams: "NID, CEPT", duration: "4 years", salary: "₹3–9 LPA", colleges: "NID Ahmedabad, CEPT University" },
+        { name: "Public Relations", exams: "Institute of Public Relations", duration: "2–3 years", salary: "₹3–8 LPA", colleges: "Xavier Institute of Communications" }
+      ],
+      arts_maths: [
+        { name: "Economics", exams: "DUET, AILET", duration: "3 years", salary: "₹4–10 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Psychology", exams: "DUET, AILET", duration: "3 years", salary: "₹3–8 LPA", colleges: "University of Delhi, TISS" },
+        { name: "Sociology", exams: "DUET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Statistics", exams: "IIT JAM", duration: "2 years", salary: "₹4–12 LPA", colleges: "IIT Kanpur, University of Delhi" },
+        { name: "Geography", exams: "DUET, JNU", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Political Science", exams: "DUET, AILET", duration: "3 years", salary: "₹4–8 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Philosophy", exams: "DUET, AILET", duration: "3 years", salary: "₹2–6 LPA", colleges: "University of Delhi, TISS" },
+        { name: "History", exams: "DUET, AILET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Anthropology", exams: "DUET", duration: "3 years", salary: "₹4–8 LPA", colleges: "University of Delhi, JNU" },
+        { name: "English Literature", exams: "DUET, AILET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" }
+      ],
+      arts_nomaths: [
+        { name: "History", exams: "DUET, AILET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Psychology", exams: "DUET, AILET", duration: "3 years", salary: "₹3–8 LPA", colleges: "University of Delhi, TISS" },
+        { name: "English Literature", exams: "DUET, AILET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Political Science", exams: "DUET, AILET", duration: "3 years", salary: "₹4–8 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Philosophy", exams: "DUET, AILET", duration: "3 years", salary: "₹2–6 LPA", colleges: "University of Delhi, TISS" },
+        { name: "Geography", exams: "DUET, JNU", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Sociology", exams: "DUET", duration: "3 years", salary: "₹3–7 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Anthropology", exams: "DUET", duration: "3 years", salary: "₹4–8 LPA", colleges: "University of Delhi, JNU" },
+        { name: "Fine Arts", exams: "Delhi University Entrance", duration: "3 years", salary: "₹3–10 LPA", colleges: "Shivaji College, Delhi University" },
+        { name: "Theatre Studies", exams: "DUET", duration: "3 years", salary: "₹2–7 LPA", colleges: "Jamia Millia Islamia, NSD" }
+      ]
+    };
+
+    function showOptions(stream) {
+      main.innerHTML = `<h2>Select a subject group:</h2>`;
+      streams[stream].forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'btn science';
+        btn.textContent = option.label;
+        btn.onclick = () => showCareers(option.key);
+        main.appendChild(btn);
+      });
+      const back = document.createElement('button');
+      back.className = 'back-btn';
+      back.textContent = '← Back to Home';
+      back.onclick = () => location.reload();
+      main.appendChild(back);
+    }
+
+    function showCareers(key) {
+      main.innerHTML = `<h2>Top Careers</h2>`;
+      careerPages[key].forEach(career => {
+        const div = document.createElement('div');
+        div.className = 'career';
+        div.innerHTML = `
+          <strong>${career.name}</strong><br>
+          <b>Exams:</b> ${career.exams}<br>
+          <b>Duration:</b> ${career.duration}<br>
+          <b>Salary:</b> ${career.salary}<br>
+          <b>Top Colleges:</b> ${career.colleges}
+        `;
+        main.appendChild(div);
+      });
+      const back = document.createElement('button');
+      back.className = 'back-btn';
+      back.textContent = '← Back to Subjects';
+      back.onclick = () => showOptions(Object.keys(streams).find(stream => streams[stream].some(opt => opt.key === key)));
+      main.appendChild(back);
+    }
+  </script>
+</body>
+</html>
